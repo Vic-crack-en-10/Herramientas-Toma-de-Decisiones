@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis FODA</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            background-color: #c6cfc4;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        p {
+            color: #000000;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .contenido {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 10px;
+            resize: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .contenedor-diagrama {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 10px;
+            justify-items: center;
+            align-items: center;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .cuadro {
+            border: 2px solid #007bff;
+            padding: 15px;
+            background-color: #f9f9f9;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .cuadro h3 {
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        #cuadroFuerzas {
+            background-color: #28a745; /* Verde */
+        }
+
+        #cuadroOportunidades {
+            background-color: #17a2b8; /* Azul claro */
+        }
+
+        #cuadroDebilidades {
+            background-color: #ffc107; /* Amarillo */
+        }
+
+        #cuadroAmenazas {
+            background-color: #dc3545; /* Rojo */
+        }
+
+        .botones {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: disc;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 5px;
+        }
+
+        .central-texto {
+            position: absolute;
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: #000000;
+            text-shadow: 2px 2px 4px rgb(255, 0, 0);
+        }
+
+        #temaCuadro {
+            border: 2px solid #007bff;
+            padding: 15px;
+            background-color: #e9ecef;
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenido">
+        <h1>Análisis FODA</h1>
+        <p>Es una herramienta estratégica utilizada para identificar y analizar los factores internos y externos que pueden influir en el logro de los objetivos de una organización, proyecto o situación específica.</p>
+
+        <form id="fodaForm">
+            <div>
+                <h2>Tema</h2>
+                <textarea id="tema" placeholder="Escribe el tema aquí..."></textarea>
+            </div>
+            <div>
+                <h2>Fuerzas</h2>
+                <h3>¿Cuáles son los aspectos positivos internos que son controlados y que le dan una ventaja competitiva?</h3>
+                <textarea id="fuerzas" placeholder="Escribe aquí las fuerzas..."></textarea>
+            </div>
+            <div>
+                <h2>Oportunidades</h2>
+                <h3>¿Cuáles son los factores externos que se pueden aprovechar para su beneficio?</h3>
+                <textarea id="oportunidades" placeholder="Escribe aquí las oportunidades..."></textarea>
+            </div>
+            <div>
+                <h2>Debilidades</h2>
+                <h3>¿Cuáles son los aspectos negativos internos que son controlados y que pueden obstaculizar el desempeño?</h3>
+                <textarea id="debilidades" placeholder="Escribe aquí las debilidades..."></textarea>
+            </div>
+            <div>
+                <h2>Amenazas</h2>
+                <h3>¿Cuáles son los factores externos que podrían causar problemas o poner en riesgo?</h3>
+                <textarea id="amenazas" placeholder="Escribe aquí las amenazas..."></textarea>
+            </div>
+        </form>
+
+        <div id="temaCuadro"></div>
+
+        <div class="contenedor-diagrama">
+            <div class="cuadro" id="cuadroFuerzas">
+                <h3>Fuerzas</h3>
+                <ul id="fuerzasLista">
+                    <li>...</li>
+                </ul>
+            </div>
+            <div class="cuadro" id="cuadroOportunidades">
+                <h3>Oportunidades</h3>
+                <ul id="oportunidadesLista">
+                    <li>...</li>
+                </ul>
+            </div>
+            <div class="cuadro" id="cuadroDebilidades">
+                <h3>Debilidades</h3>
+                <ul id="debilidadesLista">
+                    <li>...</li>
+                </ul>
+            </div>
+            <div class="cuadro" id="cuadroAmenazas">
+                <h3>Amenazas</h3>
+                <ul id="amenazasLista">
+                    <li>...</li>
+                </ul>
+            </div>
+            <!-- Texto FODA en el centro -->
+            <div class="central-texto">FODA</div>
+        </div>
+
+        <div class="botones">
+            <button type="button" onclick="resetearCampos()">Borrar Todo</button>
+            <button type="button" onclick="location.href='index.html'">Menú</button>
+        </div>
+    </div>
+
+    <script>
+        // Función para procesar el contenido del textarea y reflejarlo en una lista
+        function actualizarLista(event, listaId, textoDefault) {
+            const value = event.target.value.trim();
+            const lista = document.getElementById(listaId);
+
+            // Vaciar la lista
+            lista.innerHTML = '';
+
+            if (value.length === 0) {
+                const item = document.createElement('li');
+                item.textContent = textoDefault;
+                lista.appendChild(item);
+                return;
+            }
+
+            // Separar por líneas
+            const items = value.split('\n');
+            items.forEach(itemText => {
+                if (itemText.trim() !== '') {
+                    const item = document.createElement('li');
+                    item.textContent = itemText;
+                    lista.appendChild(item);
+                }
+            });
+        }
+
+        // Añadir eventos de entrada a los textareas
+        document.getElementById('fuerzas').addEventListener('input', (e) => actualizarLista(e, 'fuerzasLista', 'Escribe las fuerzas...'));
+        document.getElementById('oportunidades').addEventListener('input', (e) => actualizarLista(e, 'oportunidadesLista', 'Escribe las oportunidades...'));
+        document.getElementById('debilidades').addEventListener('input', (e) => actualizarLista(e, 'debilidadesLista', 'Escribe las debilidades...'));
+        document.getElementById('amenazas').addEventListener('input', (e) => actualizarLista(e, 'amenazasLista', 'Escribe las amenazas...'));
+
+        // Añadir evento para el textarea del Tema
+        document.getElementById('tema').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Evitar la nueva línea
+                const tema = event.target.value.trim();
+                if (tema.length > 0) {
+                    document.getElementById('temaCuadro').innerText = tema;
+                } else {
+                    document.getElementById('temaCuadro').innerText = '';
+                }
+                event.target.value = ''; // Limpiar el textarea
+            }
+        });
+
+        // Función para borrar todo el contenido y restablecer el diagrama
+        function resetearCampos() {
+            document.getElementById('fodaForm').reset();
+
+            // Resetear las listas en los cuadros del diagrama
+            document.getElementById('fuerzasLista').innerHTML = '<li>...</li>';
+            document.getElementById('oportunidadesLista').innerHTML = '<li>...</li>';
+            document.getElementById('debilidadesLista').innerHTML = '<li>...</li>';
+            document.getElementById('amenazasLista').innerHTML = '<li>...</li>';
+            document.getElementById('temaCuadro').innerText = ''; // Limpiar el cuadro de tema
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+

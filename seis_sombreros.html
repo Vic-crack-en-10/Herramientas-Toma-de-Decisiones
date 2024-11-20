@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seis Sombreros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #caffcd;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: black;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: lighter;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .hat-box {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            width: 200px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hat-box img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .hat-box textarea {
+            width: 100%;
+            height: 60px;
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            font-size: 14px;
+        }
+
+        .list-container {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .list-box {
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            width: 200px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .list-box img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+
+        .list-box ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .list-box ul li {
+            padding: 5px 0;
+            font-size: 14px;
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Seis Sombreros para Pensar</h1>
+    <h3>Es una metodología permite a los participantes abordar un problema desde diferentes perspectivas, facilitando así un análisis más completo y equilibrado.</h3>
+
+    <div class="container">
+        <div class="hat-box">
+            <img src="sombrero_blanco.png" alt="Sombrero Blanco">
+            <textarea id="blancoTexto" placeholder="¿Cuáles son los hechos y datos objetivos?"></textarea>
+        </div>
+
+        <div class="hat-box">
+            <img src="sombrero_rojo.png" alt="Sombrero Rojo">
+            <textarea id="rojoTexto" placeholder="¿Qué emociones te genera tal tema?"></textarea>
+        </div>
+
+        <div class="hat-box">
+            <img src="sombrero_negro.png" alt="Sombrero Negro">
+            <textarea id="negroTexto" placeholder="¿Qué fue lo negativo y las deficiencias que consideraste?"></textarea>
+        </div>
+
+        <div class="hat-box">
+            <img src="sombrero_amarillo.png" alt="Sombrero Amarillo">
+            <textarea id="amarilloTexto" placeholder="¿Qué aspectos positivos consideras?"></textarea>
+        </div>
+
+        <div class="hat-box">
+            <img src="sombrero_verde.png" alt="Sombrero Verde">
+            <textarea id="verdeTexto" placeholder="¿Cuáles oportunidades visualizas referentes al problema?"></textarea>
+        </div>
+
+        <div class="hat-box">
+            <img src="sombrero_azul.png" alt="Sombrero Azul">
+            <textarea id="azulTexto" placeholder="¿Ya obtuviste los demás sombreros? Organización y control del proceso."></textarea>
+        </div>
+    </div>
+
+    <div class="list-container">
+        <div class="list-box" id="blancoLista">
+            <img src="sombrero_blanco.png" alt="Sombrero Blanco">
+            <ul></ul>
+        </div>
+        
+        <div class="list-box" id="rojoLista">
+            <img src="sombrero_rojo.png" alt="Sombrero Rojo">
+            <ul></ul>
+        </div>
+        
+        <div class="list-box" id="negroLista">
+            <img src="sombrero_negro.png" alt="Sombrero Negro">
+            <ul></ul>
+        </div>
+        
+        <div class="list-box" id="amarilloLista">
+            <img src="sombrero_amarillo.png" alt="Sombrero Amarillo">
+            <ul></ul>
+        </div>
+        
+        <div class="list-box" id="verdeLista">
+            <img src="sombrero_verde.png" alt="Sombrero Verde">
+            <ul></ul>
+        </div>
+        
+        <div class="list-box" id="azulLista">
+            <img src="sombrero_azul.png" alt="Sombrero Azul">
+            <ul></ul>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button onclick="guardarDatos()">Guardar</button>
+        <button onclick="resetearCampos()">Borrar Todo</button>
+        <button type="button" onclick="location.href='index.html'">Menú</button>
+    </div>
+
+    <script>
+        function guardarDatos() {
+            const sombreros = ['blanco', 'rojo', 'negro', 'amarillo', 'verde', 'azul'];
+            sombreros.forEach(color => {
+                const texto = document.getElementById(color + 'Texto').value.trim();
+                const lista = document.getElementById(color + 'Lista').querySelector('ul');
+
+                if (texto) {
+                    const item = document.createElement('li');
+                    item.textContent = texto;
+                    lista.appendChild(item);
+                    document.getElementById(color + 'Texto').value = '';
+                }
+            });
+        }
+
+        function resetearCampos() {
+            const sombreros = ['blanco', 'rojo', 'negro', 'amarillo', 'verde', 'azul'];
+            sombreros.forEach(color => {
+                document.getElementById(color + 'Texto').value = '';
+                const lista = document.getElementById(color + 'Lista').querySelector('ul');
+                lista.innerHTML = '';
+            });
+        }
+    </script>
+</body>
+</html>

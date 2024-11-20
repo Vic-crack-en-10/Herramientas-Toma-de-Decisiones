@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autor</title>
+    <style>
+        body {
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #cfffd5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-container img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .profile-info p {
+            margin: 5px 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .collage {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .collage img {
+            width: 120%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .collage img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Botones */
+        .botones {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Autor</h1>
+    
+    <div class="profile-container">
+        <img src="Mi foto.jpg" alt="Foto del Autor">
+        <div class="profile-info">
+            <p><strong>Nombre:</strong> Victor Hugo Ramírez Rangel</p>
+            <p><strong>Correo:</strong> vramirez05@alumnos.uaq.mx</p>
+            <p><strong>Carrera:</strong> LATI</p>
+            <p><strong>Expediente:</strong> 276110</p>
+        </div>
+    </div>
+
+    <h2>Gustos</h2>
+    <div class="collage">
+        <img src="rzr.jpg" alt="Imagen 1">
+        <img src="enchiladas verdes.png" alt="Imagen 2">
+        <img src="Deportes.jpg" alt="Imagen 3">
+        <img src="Viajes.jpg" alt="Imagen 4">
+        <img src="Familia.jpg" alt="Imagen 5">
+        <img src="musica.jpg" alt="Imagen 6">
+    </div>
+    <div class="botones">
+        <button type="button" onclick="location.href='index.html'">Menú</button>
+    </div>
+</body>
+</html>

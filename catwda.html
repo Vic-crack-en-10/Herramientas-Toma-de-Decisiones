@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATWDA</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            background-color: #bfffe6;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        p {
+            color: #000000;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .contenido {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        textarea {
+            width: 100%;
+            height: 80px;
+            margin-bottom: 10px;
+            padding: 10px;
+            resize: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #ffffff; /* Color gris claro para el fondo */
+            box-sizing: border-box;
+        }
+
+        .contenedor-diagrama {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 10px;
+            justify-items: center;
+            align-items: center;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .cuadro {
+            border: 2px solid #007bff;
+            padding: 15px;
+            background-color: #f9f9f9;
+            text-align: center;
+            width: 100%;
+            min-width: 150px;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden; /* Ocultar el desbordamiento */
+        }
+
+        .cuadro h3 {
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        .cuadro .texto-container {
+            position: absolute;
+            top: 80px; /* Ajusta la posición para no cubrir el área de texto */
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow-y: auto; /* Permitir desplazamiento vertical */
+            padding-right: 10px; /* Espacio para la barra de desplazamiento */
+            box-sizing: border-box;
+        }
+
+        #cuadroC {
+            background-color: #28a745; /* Verde */
+        }
+
+        #cuadroA {
+            background-color: #17a2b8; /* Azul claro */
+        }
+
+        #cuadroT {
+            background-color: #ffc107; /* Amarillo */
+        }
+
+        #cuadroW {
+            background-color: #dc3545; /* Rojo */
+        }
+
+        #cuadroD {
+            background-color: #6c757d; /* Gris oscuro */
+        }
+
+        #cuadroX {
+            background-color: #007bff; /* Azul oscuro */
+        }
+
+        .botones {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenido">
+        <h1>CATWDA</h1>
+        <h3>La herramienta CATWDA proporciona un marco integral para analizar múltiples dimensiones de la toma de decisiones. </h3>
+        <p>C = Clientes ->  ¿Quiénes son los beneficiarios o afectados?</p>
+        <p>A = Actores -> ¿Quiénes son los que implementan o participan?</p>
+        <p>T = Transformación -> ¿Qué cosas puedes cambiar o hacer diferente?</p>
+        <p>W = Weltanschauung -> ¿Cómo te imaginas el mundo? ¿Qué quieres que ocurra?</p>
+        <p>D = Dueños -> ¿Quién tiene el poder de cambiar o detener?</p>
+        <p>A = Ambiente -> ¿Qué limitaciones externas afectan al sistema?</p>
+
+        <form id="katwdaForm">
+            <div>
+                <h2>Tema</h2>
+                <textarea id="tema" placeholder="Escribe aquí el tema..."></textarea>
+            </div>
+        </form>
+
+        <div class="contenedor-diagrama">
+            <div class="cuadro" id="cuadroC">
+                <h3>C</h3>
+                <textarea id="cTexto" placeholder="Clientes..."></textarea>
+            </div>
+
+            <div class="cuadro" id="cuadroA">
+                <h3>A</h3>
+                <textarea id="aTexto" placeholder="Actores..."></textarea>
+            </div>
+            <div class="cuadro" id="cuadroT">
+                <h3>T</h3>
+                <textarea id="tTexto" placeholder="Transformación..."></textarea>
+            </div>
+            <div class="cuadro" id="cuadroW">
+                <h3>W</h3>
+                <textarea id="wTexto" placeholder="Weltanschauung..."></textarea>
+            </div>
+            <div class="cuadro" id="cuadroD">
+                <h3>D</h3>
+                <textarea id="dTexto" placeholder="Dueños..."></textarea>
+            </div>
+            <div class="cuadro" id="cuadroX">
+                <h3>A</h3>
+                <textarea id="xTexto" placeholder="Ambiente..."></textarea>
+            </div>
+        </div>
+
+        <div class="botones">
+            <button type="button" onclick="resetearCampos()">Borrar Todo</button>
+            <button type="button" onclick="location.href='index.html'">Menú</button>
+        </div>
+
+    </div>
+
+    <script>
+        function actualizarLista(event, listaId) {
+            const value = event.target.value.trim();
+            const lista = document.getElementById(listaId);
+
+            // Vaciar el contenedor de texto
+            lista.innerHTML = '';
+
+            if (value.length === 0) return;
+
+            // Separar por líneas
+            const items = value.split('\n');
+            items.forEach(itemText => {
+                if (itemText.trim() !== '') {
+                    const item = document.createElement('div');
+                    item.textContent = itemText;
+                    lista.appendChild(item);
+                }
+            });
+        }
+
+        // Añadir eventos de entrada a los textareas
+        document.getElementById('cTexto').addEventListener('input', (e) => actualizarLista(e, 'cLista'));
+        document.getElementById('aTexto').addEventListener('input', (e) => actualizarLista(e, 'aLista'));
+        document.getElementById('tTexto').addEventListener('input', (e) => actualizarLista(e, 'tLista'));
+        document.getElementById('wTexto').addEventListener('input', (e) => actualizarLista(e, 'wLista'));
+        document.getElementById('dTexto').addEventListener('input', (e) => actualizarLista(e, 'dLista'));
+        document.getElementById('xTexto').addEventListener('input', (e) => actualizarLista(e, 'xLista'));
+
+        // Función para borrar todo el contenido y restablecer el diagrama
+        function resetearCampos() {
+            document.getElementById('tema').value = '';
+            document.getElementById('cTexto').value = '';
+            document.getElementById('aTexto').value = '';
+            document.getElementById('tTexto').value = '';
+            document.getElementById('wTexto').value = '';
+            document.getElementById('dTexto').value = '';
+            document.getElementById('xTexto').value = '';
+
+            // Resetear las listas en los cuadros del diagrama
+            document.getElementById('cLista').innerHTML = '';
+            document.getElementById('aLista').innerHTML = '';
+            document.getElementById('tLista').innerHTML = '';
+            document.getElementById('wLista').innerHTML = '';
+            document.getElementById('dLista').innerHTML = '';
+            document.getElementById('xLista').innerHTML = '';
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
